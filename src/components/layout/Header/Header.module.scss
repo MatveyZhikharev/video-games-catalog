@@ -42,61 +42,22 @@
   }
 }
 
-// Navigation - always visible
-.nav {
-  display: flex;
-  align-items: center;
-  gap: $spacing-md;
-
-  @include tablet-up {
-    gap: $spacing-lg;
-  }
-}
-
-.navLink {
-  display: flex;
-  align-items: center;
-  gap: $spacing-xs;
-  padding: $spacing-xs $spacing-sm;
-  color: $text-secondary;
-  text-decoration: none;
-  font-weight: $font-medium;
-  font-size: $font-sm;
-  border-radius: $radius-md;
-  transition: all $transition-fast;
-  white-space: nowrap;
-
-  @include tablet-up {
-    padding: $spacing-sm $spacing-md;
-    font-size: $font-base;
-  }
-
-  &:hover {
-    color: $primary-color;
-    background: rgba($primary-color, 0.1);
-  }
-
-  &.active {
-    color: $primary-color;
-    background: rgba($primary-color, 0.1);
-  }
-}
-
-.badge {
-  @include flex-center;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 $spacing-xs;
-  background: $primary-color;
-  color: $text-light;
-  font-size: $font-xs;
-  font-weight: $font-bold;
-  border-radius: $radius-full;
-}
-
-// Mobile menu button - hidden until functionality is fully implemented
+// Mobile menu button - shown only when navigation doesn't fit (mobile screens)
 .mobileMenuButton {
-  display: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: $z-modal + 1;
+
+  // Hide on screens where navigation fits (tablet and up)
+  @include tablet-up {
+    display: none;
+  }
 }
 
 .hamburger {
@@ -140,7 +101,98 @@
   }
 }
 
-// Overlay - hidden until burger menu functionality is fully implemented
+// Navigation - responsive behavior
+.nav {
+  // Mobile: hidden by default, shown when menu is open
+  @include mobile {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: $spacing-md;
+    background: $bg-primary;
+    transform: translateX(-100%);
+    transition: transform $transition-normal;
+    z-index: $z-modal;
+    overflow-y: auto;
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+
+  // Tablet and up: always visible as horizontal nav
+  @include tablet-up {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-sm;
+  color: $text-secondary;
+  text-decoration: none;
+  font-weight: $font-medium;
+  font-size: $font-sm;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  // Mobile: full-width links
+  @include mobile {
+    padding: $spacing-md;
+    font-size: $font-base;
+    border-bottom: 1px solid $border-color;
+  }
+
+  @include tablet-up {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-base;
+  }
+
+  &:hover {
+    color: $primary-color;
+    background: rgba($primary-color, 0.1);
+  }
+
+  &.active {
+    color: $primary-color;
+    background: rgba($primary-color, 0.1);
+  }
+}
+
+.badge {
+  @include flex-center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 $spacing-xs;
+  background: $primary-color;
+  color: $text-light;
+  font-size: $font-xs;
+  font-weight: $font-bold;
+  border-radius: $radius-full;
+}
+
+// Overlay for mobile menu
 .overlay {
-  display: none !important;
+  display: none;
+
+  @include mobile {
+    display: block;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: $z-modal - 1;
+  }
 }
