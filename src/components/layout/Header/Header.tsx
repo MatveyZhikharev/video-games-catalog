@@ -1,44 +1,32 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { cn } from '@/utils/helpers';
 import { useAppSelector } from '@/app/hooks';
 import { selectFavoritesCount } from '@/features/favorites/favoritesSelectors';
 
+const MOBILE_BREAKPOINT = 768;
+
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showBurger, setShowBurger] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLElement>(null);
-  const logoRef = useRef<HTMLAnchorElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const favoritesCount = useAppSelector(selectFavoritesCount);
 
-  // Check if navigation fits in the header
+  // Check if we're on mobile screen
   useEffect(() => {
-    const checkOverflow = () => {
-      if (!containerRef.current || !navRef.current || !logoRef.current) return;
-      
-      const containerWidth = containerRef.current.offsetWidth;
-      const logoWidth = logoRef.current.offsetWidth;
-      const navWidth = navRef.current.scrollWidth;
-      const gap = 48; // Spacing between elements
-      const burgerWidth = 40; // Width of burger button
-      
-      // Check if logo + nav + spacing fits in container
-      const totalWidth = logoWidth + navWidth + gap;
-      const needsBurger = totalWidth > containerWidth - burgerWidth;
-      
-      setShowBurger(needsBurger);
+    const checkMobile = () => {
+      const mobile = window.innerWidth < MOBILE_BREAKPOINT;
+      setIsMobile(mobile);
       
       // Close mobile menu if we switch to desktop mode
-      if (!needsBurger && isMobileMenuOpen) {
+      if (!mobile && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
       }
     };
 
-    checkOverflow();
-    window.addEventListener('resize', checkOverflow);
-    return () => window.removeEventListener('resize', checkOverflow);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, [isMobileMenuOpen]);
 
   const toggleMobileMenu = useCallback(() => {
@@ -51,13 +39,13 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.container} ref={containerRef}>
-        <Link to="/" className={styles.logo} onClick={closeMobileMenu} ref={logoRef}>
+      <div className={styles.container}>
+        <Link to="/" className={styles.logo} onClick={closeMobileMenu}>
           <span className={styles.logoIcon}>🎮</span>
           <span className={styles.logoText}>GameCatalog</span>
         </Link>
 
-        {showBurger && (
+        {isMobile && (
           <button
             className={cn(styles.mobileMenuButton, isMobileMenuOpen && styles.active)}
             onClick={toggleMobileMenu}
@@ -71,10 +59,9 @@ export const Header = () => {
         <nav 
           className={cn(
             styles.nav, 
-            showBurger && styles.mobileNav,
-            showBurger && isMobileMenuOpen && styles.open
+            isMobile && styles.mobileNav,
+            isMobile && isMobileMenuOpen && styles.open
           )}
-          ref={navRef}
         >
           <NavLink
             to="/"
@@ -100,7 +87,7 @@ export const Header = () => {
           </NavLink>
         </nav>
 
-        {showBurger && isMobileMenuOpen && <div className={styles.overlay} onClick={closeMobileMenu} />}
+        {isMobile && isMobileMenuOpen && <div className={styles.overlay} onClick={closeMobileMenu} />}
       </div>
     </header>
   );
