@@ -22,11 +22,12 @@ export function debounce<T extends (...args: Parameters<T>) => void>(
 /**
  * Format date to locale string
  */
-export function formatDate(dateString: string, locale = 'ru-RU'): string {
+export function formatDate(dateString: string, locale?: string): string {
   if (!dateString) return '';
   const date = new Date(dateString);
   if (isNaN(date.getTime())) return '';
-  return date.toLocaleDateString(locale, {
+  const userLocale = locale || (typeof navigator !== 'undefined' ? navigator.language : 'en-US');
+  return date.toLocaleDateString(userLocale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -36,11 +37,12 @@ export function formatDate(dateString: string, locale = 'ru-RU'): string {
 /**
  * Format date to short format
  */
-export function formatDateShort(dateString: string, locale = 'ru-RU'): string {
+export function formatDateShort(dateString: string, locale?: string): string {
   if (!dateString) return '';
   const date = new Date(dateString);
   if (isNaN(date.getTime())) return '';
-  return date.toLocaleDateString(locale, {
+  const userLocale = locale || (typeof navigator !== 'undefined' ? navigator.language : 'en-US');
+  return date.toLocaleDateString(userLocale, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
