@@ -26,6 +26,7 @@
   font-weight: $font-bold;
   font-size: $font-xl;
   transition: color $transition-fast;
+  flex-shrink: 0;
 
   &:hover {
     color: $primary-color;
@@ -42,7 +43,7 @@
   }
 }
 
-// Mobile menu button - shown only when navigation doesn't fit (mobile screens)
+// Mobile menu button - shown dynamically when navigation doesn't fit
 .mobileMenuButton {
   display: flex;
   align-items: center;
@@ -53,11 +54,7 @@
   border: none;
   cursor: pointer;
   z-index: $z-modal + 1;
-
-  // Hide on screens where navigation fits (tablet and up)
-  @include tablet-up {
-    display: none;
-  }
+  flex-shrink: 0;
 }
 
 .hamburger {
@@ -101,35 +98,38 @@
   }
 }
 
-// Navigation - responsive behavior
+// Navigation - default horizontal layout
 .nav {
-  // Mobile: hidden by default, shown when menu is open
-  @include mobile {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: $spacing-md;
-    background: $bg-primary;
-    transform: translateX(-100%);
-    transition: transform $transition-normal;
-    z-index: $z-modal;
-    overflow-y: auto;
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
 
-    &.open {
-      transform: translateX(0);
-    }
+// Navigation - mobile layout when burger is shown
+.mobileNav {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: $spacing-md;
+  background: $bg-primary;
+  transform: translateX(-100%);
+  transition: transform $transition-normal;
+  z-index: $z-modal;
+  overflow-y: auto;
+
+  &.open {
+    transform: translateX(0);
   }
 
-  // Tablet and up: always visible as horizontal nav
-  @include tablet-up {
-    display: flex;
-    align-items: center;
-    gap: $spacing-lg;
+  .navLink {
+    padding: $spacing-md;
+    font-size: $font-base;
+    border-bottom: 1px solid $border-color;
   }
 }
 
@@ -137,26 +137,14 @@
   display: flex;
   align-items: center;
   gap: $spacing-xs;
-  padding: $spacing-xs $spacing-sm;
+  padding: $spacing-sm $spacing-md;
   color: $text-secondary;
   text-decoration: none;
   font-weight: $font-medium;
-  font-size: $font-sm;
+  font-size: $font-base;
   border-radius: $radius-md;
   transition: all $transition-fast;
   white-space: nowrap;
-
-  // Mobile: full-width links
-  @include mobile {
-    padding: $spacing-md;
-    font-size: $font-base;
-    border-bottom: 1px solid $border-color;
-  }
-
-  @include tablet-up {
-    padding: $spacing-sm $spacing-md;
-    font-size: $font-base;
-  }
 
   &:hover {
     color: $primary-color;
@@ -183,16 +171,11 @@
 
 // Overlay for mobile menu
 .overlay {
-  display: none;
-
-  @include mobile {
-    display: block;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: $z-modal - 1;
-  }
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: $z-modal - 1;
 }
