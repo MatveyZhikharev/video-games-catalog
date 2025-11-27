@@ -61,7 +61,7 @@
     padding: $spacing-md;
     transform: translateX(100%);
     transition: transform $transition-slow;
-    z-index: $z-fixed;
+    z-index: $z-modal;
 
     &.open {
       transform: translateX(0);
