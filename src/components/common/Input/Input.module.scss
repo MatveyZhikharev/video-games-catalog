@@ -1,0 +1,93 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.label {
+  font-size: $font-sm;
+  font-weight: $font-medium;
+  color: $text-primary;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  font-size: $font-base;
+  background: $bg-primary;
+  color: $text-primary;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+  }
+
+  &:disabled {
+    background: $bg-secondary;
+    cursor: not-allowed;
+    color: $text-muted;
+  }
+}
+
+.hasLeftIcon {
+  padding-left: 2.5rem;
+}
+
+.hasRightIcon {
+  padding-right: 2.5rem;
+}
+
+.leftIcon,
+.rightIcon {
+  position: absolute;
+  @include flex-center;
+  color: $text-muted;
+  pointer-events: none;
+  font-size: $font-lg;
+}
+
+.leftIcon {
+  left: $spacing-sm;
+}
+
+.rightIcon {
+  right: $spacing-sm;
+}
+
+.hasError {
+  .input {
+    border-color: $error-color;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($error-color, 0.1);
+    }
+  }
+
+  .leftIcon,
+  .rightIcon {
+    color: $error-color;
+  }
+}
+
+.error {
+  font-size: $font-sm;
+  color: $error-color;
+}

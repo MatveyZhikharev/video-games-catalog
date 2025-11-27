@@ -1,0 +1,164 @@
+.page {
+  @include flex-column;
+  gap: $spacing-lg;
+}
+
+.nav {
+  margin-bottom: $spacing-md;
+}
+
+.backButton {
+  margin-top: $spacing-lg;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+
+  @include desktop {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.gallery {
+  order: 1;
+
+  @include desktop {
+    order: 0;
+    position: sticky;
+    top: 88px;
+    height: fit-content;
+  }
+}
+
+.info {
+  @include flex-column;
+  gap: $spacing-lg;
+}
+
+.header {
+  @include flex-column;
+  gap: $spacing-md;
+}
+
+.title {
+  font-size: $font-4xl;
+  font-weight: $font-bold;
+  margin: 0;
+  line-height: 1.2;
+
+  @include mobile {
+    font-size: $font-2xl;
+  }
+}
+
+.meta {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.releaseDate {
+  @include flex-column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: $font-sm;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.value {
+  font-size: $font-base;
+  font-weight: $font-medium;
+  color: $text-primary;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.section {
+  padding-top: $spacing-lg;
+  border-top: 1px solid $border-color;
+}
+
+.sectionTitle {
+  font-size: $font-lg;
+  font-weight: $font-semibold;
+  margin-bottom: $spacing-md;
+  color: $text-primary;
+}
+
+.description {
+  color: $text-secondary;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.platform {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  background: $bg-secondary;
+  border-radius: $radius-lg;
+  font-size: $font-sm;
+  font-weight: $font-medium;
+}
+
+.platformIcon {
+  font-size: $font-lg;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.genre {
+  padding: $spacing-sm $spacing-md;
+  color: $text-light;
+  font-size: $font-sm;
+  font-weight: $font-semibold;
+  border-radius: $radius-full;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-md;
+  margin: 0;
+}
+
+.detailItem {
+  dt {
+    font-size: $font-sm;
+    color: $text-muted;
+    margin-bottom: $spacing-xs;
+  }
+
+  dd {
+    font-size: $font-base;
+    font-weight: $font-medium;
+    color: $text-primary;
+    margin: 0;
+  }
+}

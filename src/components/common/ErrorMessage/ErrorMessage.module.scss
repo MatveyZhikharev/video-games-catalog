@@ -1,0 +1,55 @@
+.error,
+.empty {
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+  padding: $spacing-2xl;
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+}
+
+.iconWrapper {
+  @include flex-center;
+  width: 64px;
+  height: 64px;
+  border-radius: $radius-full;
+  margin-bottom: $spacing-md;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.error .iconWrapper {
+  background: rgba($error-color, 0.1);
+  color: $error-color;
+}
+
+.empty .iconWrapper {
+  background: rgba($primary-color, 0.1);
+  color: $primary-color;
+}
+
+.title {
+  font-size: $font-xl;
+  font-weight: $font-semibold;
+  color: $text-primary;
+  margin-bottom: $spacing-xs;
+}
+
+.message {
+  font-size: $font-base;
+  color: $text-secondary;
+  margin-bottom: $spacing-md;
+  max-width: 400px;
+}
+
+.retryButton {
+  margin-top: $spacing-sm;
+}
+
+.action {
+  margin-top: $spacing-sm;
+}

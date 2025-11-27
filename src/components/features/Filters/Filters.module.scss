@@ -1,0 +1,121 @@
+.filters {
+  position: relative;
+}
+
+.header {
+  @include flex-start;
+  gap: $spacing-sm;
+}
+
+.toggleButton {
+  gap: $spacing-sm;
+
+  &.active {
+    background: $primary-color;
+    color: $text-light;
+    border-color: $primary-color;
+  }
+}
+
+.badge {
+  width: 8px;
+  height: 8px;
+  background: $primary-color;
+  border-radius: $radius-full;
+
+  .active & {
+    background: $text-light;
+  }
+}
+
+.panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: $spacing-sm;
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  padding: $spacing-md;
+  min-width: 280px;
+  z-index: $z-dropdown;
+  @include fade-in;
+
+  &.open {
+    display: block;
+  }
+
+  @include mobile {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    border-radius: $radius-lg $radius-lg 0 0;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+}
+
+.section {
+  &:not(:last-child) {
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.sectionTitle {
+  font-size: $font-sm;
+  font-weight: $font-semibold;
+  color: $text-secondary;
+  margin-bottom: $spacing-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-sm;
+  background: $bg-secondary;
+  color: $text-primary;
+  font-size: $font-sm;
+  font-weight: $font-medium;
+  border: 1px solid transparent;
+  border-radius: $radius-full;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: darken($bg-secondary, 5%);
+  }
+
+  &.selected {
+    background: $primary-color;
+    color: $text-light;
+  }
+}
+
+.overlay {
+  display: none;
+
+  @include mobile {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: $z-modal-backdrop;
+  }
+}
