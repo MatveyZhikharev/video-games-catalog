@@ -59,19 +59,19 @@ export const Filters = () => {
           >
             <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
           </svg>
-          Filters
+          Фильтры
           {hasActiveFilters && <span className={styles.badge} />}
         </Button>
         {hasActiveFilters && (
           <Button variant="ghost" size="sm" onClick={handleClearFilters}>
-            Clear all
+            Сбросить
           </Button>
         )}
       </div>
 
       <div className={cn(styles.panel, isOpen && styles.open)}>
         <div className={styles.section}>
-          <h4 className={styles.sectionTitle}>Platforms</h4>
+          <h4 className={styles.sectionTitle}>Платформы</h4>
           <div className={styles.chips}>
             {PLATFORMS.map((platform) => (
               <button
@@ -90,7 +90,7 @@ export const Filters = () => {
         </div>
 
         <div className={styles.section}>
-          <h4 className={styles.sectionTitle}>Genres</h4>
+          <h4 className={styles.sectionTitle}>Жанры</h4>
           <div className={styles.chips}>
             {GENRES.map((genre) => (
               <button

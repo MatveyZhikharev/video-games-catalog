@@ -21,13 +21,13 @@ export const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
   const pageNumbers = getPageNumbers(currentPage, totalPages);
 
   return (
-    <nav className={styles.pagination} aria-label="Pagination">
+    <nav className={styles.pagination} aria-label="Навигация по страницам">
       <Button
         variant="outline"
         size="sm"
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
-        aria-label="Previous page"
+        aria-label="Предыдущая страница"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ export const Pagination = ({ currentPage, totalPages }: PaginationProps) => {
         size="sm"
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
-        aria-label="Next page"
+        aria-label="Следующая страница"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

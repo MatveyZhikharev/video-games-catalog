@@ -14,10 +14,10 @@ interface SortOption {
 }
 
 const SORT_OPTIONS: SortOption[] = [
-  { label: 'Rating (High to Low)', field: 'rating', order: 'desc' },
-  { label: 'Rating (Low to High)', field: 'rating', order: 'asc' },
-  { label: 'Newest First', field: 'release_date', order: 'desc' },
-  { label: 'Oldest First', field: 'release_date', order: 'asc' },
+  { label: 'Рейтинг (по убыванию)', field: 'rating', order: 'desc' },
+  { label: 'Рейтинг (по возрастанию)', field: 'rating', order: 'asc' },
+  { label: 'Сначала новые', field: 'release_date', order: 'desc' },
+  { label: 'Сначала старые', field: 'release_date', order: 'asc' },
 ];
 
 export const Sorting = () => {
@@ -73,7 +73,7 @@ export const Sorting = () => {
           <path d="m3 17 3 3 3-3" />
           <path d="M6 18V4" />
         </svg>
-        <span className={styles.buttonText}>{currentOption?.label || 'Sort'}</span>
+        <span className={styles.buttonText}>{currentOption?.label || 'Сортировка'}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

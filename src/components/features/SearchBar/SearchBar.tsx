@@ -11,7 +11,7 @@ export interface SearchBarProps {
 }
 
 export const SearchBar = ({
-  placeholder = 'Search games...',
+  placeholder = 'Поиск игр...',
   debounceMs = 400,
 }: SearchBarProps) => {
   const dispatch = useAppDispatch();
@@ -85,7 +85,7 @@ export const SearchBar = ({
               type="button"
               onClick={handleClear}
               className={styles.clearButton}
-              aria-label="Clear search"
+              aria-label="Очистить поиск"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ export const SearchBar = ({
             </button>
           )
         }
-        aria-label="Search games"
+        aria-label="Поиск игр"
       />
     </div>
   );

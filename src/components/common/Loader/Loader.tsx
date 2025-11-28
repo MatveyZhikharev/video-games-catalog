@@ -12,7 +12,7 @@ export const Loader = ({ size = 'md', fullScreen = false, text }: LoaderProps) =
     <div
       className={cn(styles.loader, styles[size], fullScreen && styles.fullScreen)}
       role="status"
-      aria-label={text || 'Loading'}
+      aria-label={text || 'Загрузка'}
     >
       <div className={styles.spinner}>
         <svg viewBox="0 0 50 50">

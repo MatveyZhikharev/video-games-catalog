@@ -68,14 +68,14 @@ export const Header = () => {
             className={({ isActive }) => cn(styles.navLink, isActive && styles.active)}
             onClick={closeMobileMenu}
           >
-            Home
+            Главная
           </NavLink>
           <NavLink
             to="/favorites"
             className={({ isActive }) => cn(styles.navLink, isActive && styles.active)}
             onClick={closeMobileMenu}
           >
-            Favorites
+            Избранное
             {favoritesCount > 0 && <span className={styles.badge}>{favoritesCount}</span>}
           </NavLink>
           <NavLink
@@ -83,7 +83,7 @@ export const Header = () => {
             className={({ isActive }) => cn(styles.navLink, isActive && styles.active)}
             onClick={closeMobileMenu}
           >
-            About
+            О проекте
           </NavLink>
         </nav>
 

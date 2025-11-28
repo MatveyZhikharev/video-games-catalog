@@ -42,14 +42,14 @@ export const FavoritesPage = () => {
     return (
       <div className={styles.page}>
         <header className={styles.header}>
-          <h1 className={styles.title}>❤️ My Favorites</h1>
+          <h1 className={styles.title}>❤️ Моё избранное</h1>
         </header>
         <EmptyState
-          title="No Favorites Yet"
-          message="You haven't added any games to your favorites. Browse the catalog to discover games you love!"
+          title="Пока ничего нет"
+          message="Вы ещё не добавили игры в избранное. Откройте каталог, чтобы найти игры, которые вам понравятся!"
           action={
             <Link to="/">
-              <Button variant="primary">Browse Games</Button>
+              <Button variant="primary">Перейти в каталог</Button>
             </Link>
           }
           icon={
@@ -63,9 +63,9 @@ export const FavoritesPage = () => {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1 className={styles.title}>❤️ My Favorites</h1>
+        <h1 className={styles.title}>❤️ Моё избранное</h1>
         <p className={styles.subtitle}>
-          {games.length} {games.length === 1 ? 'game' : 'games'} in your collection
+          {games.length} {games.length === 1 ? 'игра' : games.length < 5 ? 'игры' : 'игр'} в вашей коллекции
         </p>
       </header>
 

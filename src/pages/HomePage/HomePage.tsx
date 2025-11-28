@@ -41,7 +41,7 @@ export const HomePage = () => {
     return (
       <div className={styles.page}>
         <ErrorMessage
-          title="Failed to Load Games"
+          title="Не удалось загрузить игры"
           message={error}
           onRetry={handleRetry}
         />
@@ -52,9 +52,9 @@ export const HomePage = () => {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1 className={styles.title}>🎮 Game Catalog</h1>
+        <h1 className={styles.title}>🎮 Каталог игр</h1>
         <p className={styles.subtitle}>
-          Discover your next favorite game from our curated collection
+          Откройте для себя новые любимые игры из нашей коллекции
         </p>
       </header>
 

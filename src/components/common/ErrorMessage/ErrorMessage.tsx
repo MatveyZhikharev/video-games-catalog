@@ -13,10 +13,10 @@ export interface ErrorMessageProps {
 }
 
 export const ErrorMessage = ({
-  title = 'Error',
+  title = 'Ошибка',
   message,
   onRetry,
-  retryText = 'Try Again',
+  retryText = 'Попробовать снова',
   className,
   icon,
 }: ErrorMessageProps) => {
@@ -60,7 +60,7 @@ export interface EmptyStateProps {
 }
 
 export const EmptyState = ({
-  title = 'No Results',
+  title = 'Ничего не найдено',
   message,
   action,
   className,

@@ -17,12 +17,12 @@ export const GameList = ({
   games,
   loading = false,
   skeletonCount = 12,
-  emptyMessage = 'No games found matching your criteria.',
+  emptyMessage = 'Игры не найдены по вашим критериям.',
   onClearFilters,
 }: GameListProps) => {
   if (loading) {
     return (
-      <div className={styles.grid} aria-label="Loading games">
+      <div className={styles.grid} aria-label="Загрузка игр">
         {Array.from({ length: skeletonCount }).map((_, index) => (
           <GameCardSkeleton key={index} />
         ))}
@@ -33,12 +33,12 @@ export const GameList = ({
   if (games.length === 0) {
     return (
       <EmptyState
-        title="No Games Found"
+        title="Игры не найдены"
         message={emptyMessage}
         action={
           onClearFilters && (
             <Button variant="primary" onClick={onClearFilters}>
-              Clear Filters
+              Сбросить фильтры
             </Button>
           )
         }

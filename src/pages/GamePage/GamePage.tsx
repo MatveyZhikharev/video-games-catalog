@@ -54,7 +54,7 @@ export const GamePage = () => {
   if (loading) {
     return (
       <div className={styles.page}>
-        <Loader fullScreen text="Loading game details..." />
+        <Loader fullScreen text="Загрузка информации об игре..." />
       </div>
     );
   }
@@ -63,12 +63,12 @@ export const GamePage = () => {
     return (
       <div className={styles.page}>
         <ErrorMessage
-          title="Failed to Load Game"
+          title="Не удалось загрузить игру"
           message={error}
           onRetry={handleRetry}
         />
         <Button variant="outline" onClick={handleBack} className={styles.backButton}>
-          ← Back to Catalog
+          ← Назад в каталог
         </Button>
       </div>
     );
@@ -78,11 +78,11 @@ export const GamePage = () => {
     return (
       <div className={styles.page}>
         <ErrorMessage
-          title="Game Not Found"
-          message="The game you're looking for doesn't exist or has been removed."
+          title="Игра не найдена"
+          message="Игра, которую вы ищете, не существует или была удалена."
         />
         <Button variant="outline" onClick={handleBack} className={styles.backButton}>
-          ← Back to Catalog
+          ← Назад в каталог
         </Button>
       </div>
     );
@@ -92,7 +92,7 @@ export const GamePage = () => {
     <article className={styles.page}>
       <nav className={styles.nav}>
         <Button variant="outline" onClick={handleBack}>
-          ← Back to Catalog
+          ← Назад в каталог
         </Button>
       </nav>
 
@@ -112,7 +112,7 @@ export const GamePage = () => {
                 )}
               </div>
               <div className={styles.releaseDate}>
-                <span className={styles.label}>Release Date</span>
+                <span className={styles.label}>Дата выхода</span>
                 <span className={styles.value}>{formatDate(game.release_date)}</span>
               </div>
             </div>
@@ -124,17 +124,17 @@ export const GamePage = () => {
               onClick={handleToggleFavorite}
               leftIcon={isFavorite ? '❤️' : '🤍'}
             >
-              {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              {isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}
             </Button>
           </div>
 
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>About</h2>
+            <h2 className={styles.sectionTitle}>Об игре</h2>
             <p className={styles.description}>{game.description}</p>
           </section>
 
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Platforms</h2>
+            <h2 className={styles.sectionTitle}>Платформы</h2>
             <div className={styles.platforms}>
               {game.platforms.map((platform) => (
                 <span key={platform} className={styles.platform}>
@@ -146,7 +146,7 @@ export const GamePage = () => {
           </section>
 
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Genres</h2>
+            <h2 className={styles.sectionTitle}>Жанры</h2>
             <div className={styles.genres}>
               {game.genres.map((genre) => (
                 <span
@@ -161,14 +161,14 @@ export const GamePage = () => {
           </section>
 
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Details</h2>
+            <h2 className={styles.sectionTitle}>Детали</h2>
             <dl className={styles.details}>
               <div className={styles.detailItem}>
-                <dt>Developer</dt>
+                <dt>Разработчик</dt>
                 <dd>{game.developer}</dd>
               </div>
               <div className={styles.detailItem}>
-                <dt>Publisher</dt>
+                <dt>Издатель</dt>
                 <dd>{game.publisher}</dd>
               </div>
             </dl>

@@ -14,27 +14,27 @@ export const Footer = () => {
               <span className={styles.logoText}>GameCatalog</span>
             </Link>
             <p className={styles.description}>
-              Your ultimate destination for discovering and tracking your favorite video games.
+              Ваше место для поиска и отслеживания любимых видеоигр.
             </p>
           </div>
 
           <div className={styles.links}>
-            <h4 className={styles.linksTitle}>Quick Links</h4>
+            <h4 className={styles.linksTitle}>Быстрые ссылки</h4>
             <nav className={styles.nav}>
               <Link to="/" className={styles.link}>
-                Home
+                Главная
               </Link>
               <Link to="/favorites" className={styles.link}>
-                Favorites
+                Избранное
               </Link>
               <Link to="/about" className={styles.link}>
-                About
+                О проекте
               </Link>
             </nav>
           </div>
 
           <div className={styles.links}>
-            <h4 className={styles.linksTitle}>Technologies</h4>
+            <h4 className={styles.linksTitle}>Технологии</h4>
             <ul className={styles.techList}>
               <li>React 18</li>
               <li>TypeScript</li>
@@ -46,7 +46,7 @@ export const Footer = () => {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {currentYear} GameCatalog. All rights reserved.
+            © {currentYear} GameCatalog. Все права защищены.
           </p>
           <a
             href="https://github.com/MatveyZhikharev/video-games-catalog"
