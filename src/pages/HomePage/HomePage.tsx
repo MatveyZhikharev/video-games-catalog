@@ -7,6 +7,9 @@ import {
   selectGamesError,
   selectPagination,
   selectTotalPages,
+  selectSearchQuery,
+  selectFilters,
+  selectSorting,
 } from '@/features/games/gamesSelectors';
 import { GameList } from '@/components/features/GameList';
 import { SearchBar } from '@/components/features/SearchBar';
@@ -23,10 +26,14 @@ export const HomePage = () => {
   const error = useAppSelector(selectGamesError);
   const pagination = useAppSelector(selectPagination);
   const totalPages = useAppSelector(selectTotalPages);
+  const searchQuery = useAppSelector(selectSearchQuery);
+  const filters = useAppSelector(selectFilters);
+  const sorting = useAppSelector(selectSorting);
 
+  // Fetch games when search, filters, sorting, or page changes
   useEffect(() => {
     dispatch(fetchGames({}));
-  }, [dispatch]);
+  }, [dispatch, searchQuery, filters, sorting, pagination.page]);
 
   const handleClearFilters = useCallback(() => {
     dispatch(clearFilters());
