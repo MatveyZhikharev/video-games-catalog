@@ -1,3 +1,7 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use 'sass:color';
+
 .filters {
   position: relative;
 }
@@ -96,7 +100,7 @@
   transition: all $transition-fast;
 
   &:hover {
-    background: darken($bg-secondary, 5%);
+    background: color.adjust($bg-secondary, $lightness: -5%);
   }
 
   &.selected {
