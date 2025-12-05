@@ -14,6 +14,12 @@ const FavoritesPage = lazy(() =>
 const AboutPage = lazy(() =>
   import('@/pages/AboutPage').then((module) => ({ default: module.AboutPage }))
 );
+const AdminPage = lazy(() =>
+  import('@/pages/AdminPage').then((module) => ({ default: module.AdminPage }))
+);
+const AIRecommendPage = lazy(() =>
+  import('@/pages/AIRecommendPage').then((module) => ({ default: module.AIRecommendPage }))
+);
 
 export const router = createBrowserRouter(
   [
@@ -36,6 +42,14 @@ export const router = createBrowserRouter(
         {
           path: 'about',
           element: <AboutPage />,
+        },
+        {
+          path: 'ai',
+          element: <AIRecommendPage />,
+        },
+        {
+          path: 'admin',
+          element: <AdminPage />,
         },
       ],
     },

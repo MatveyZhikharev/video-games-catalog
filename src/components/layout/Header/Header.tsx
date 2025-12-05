@@ -71,12 +71,26 @@ export const Header = () => {
             Главная
           </NavLink>
           <NavLink
+            to="/ai"
+            className={({ isActive }) => cn(styles.navLink, styles.aiLink, isActive && styles.active)}
+            onClick={closeMobileMenu}
+          >
+            🤖 AI Подбор
+          </NavLink>
+          <NavLink
             to="/favorites"
             className={({ isActive }) => cn(styles.navLink, isActive && styles.active)}
             onClick={closeMobileMenu}
           >
             Избранное
             {favoritesCount > 0 && <span className={styles.badge}>{favoritesCount}</span>}
+          </NavLink>
+          <NavLink
+            to="/admin"
+            className={({ isActive }) => cn(styles.navLink, isActive && styles.active)}
+            onClick={closeMobileMenu}
+          >
+            🛠️ Админ
           </NavLink>
           <NavLink
             to="/about"

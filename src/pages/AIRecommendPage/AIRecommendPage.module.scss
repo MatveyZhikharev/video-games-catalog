@@ -1,0 +1,287 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.aiPage {
+  @include container;
+  padding: $spacing-lg 0;
+  min-height: 60vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+
+  h1 {
+    font-size: $font-size-2xl;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+  }
+
+  p {
+    color: $text-secondary;
+    font-size: $font-size-lg;
+  }
+}
+
+.moodSection {
+  margin-bottom: $spacing-xl;
+
+  h2 {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    color: $text-primary;
+  }
+}
+
+.moodGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: $spacing-md;
+}
+
+.moodCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-lg;
+  background: $bg-secondary;
+  border: 2px solid transparent;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-normal;
+  text-align: center;
+
+  &:hover {
+    background: $bg-tertiary;
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  &.selected {
+    border-color: $primary-color;
+    background: rgba($primary-color, 0.1);
+  }
+}
+
+.moodEmoji {
+  font-size: 3rem;
+  margin-bottom: $spacing-sm;
+}
+
+.moodLabel {
+  font-weight: 600;
+  color: $text-primary;
+  margin-bottom: $spacing-xs;
+}
+
+.moodDescription {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+}
+
+.filtersSection {
+  margin-bottom: $spacing-xl;
+  background: $bg-secondary;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+}
+
+.filtersToggle {
+  width: 100%;
+  padding: $spacing-md;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: $text-primary;
+  font-size: $font-size-base;
+  font-weight: 500;
+  text-align: left;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.filtersContent {
+  padding: $spacing-md;
+  padding-top: 0;
+}
+
+.filterGroup {
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-weight: 500;
+    color: $text-primary;
+  }
+}
+
+.slider {
+  width: 100%;
+  max-width: 300px;
+  height: 8px;
+  border-radius: 4px;
+  background: $bg-tertiary;
+  appearance: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: $primary-color;
+    cursor: pointer;
+  }
+}
+
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.chip {
+  padding: $spacing-xs $spacing-md;
+  background: $bg-primary;
+  border: 1px solid $border-color;
+  border-radius: $radius-full;
+  cursor: pointer;
+  transition: all $transition-fast;
+  color: $text-primary;
+  font-size: $font-size-sm;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &.active {
+    background: $primary-color;
+    border-color: $primary-color;
+    color: white;
+  }
+}
+
+.loadingSection {
+  text-align: center;
+  padding: $spacing-2xl;
+
+  p {
+    margin-top: $spacing-md;
+    color: $text-secondary;
+  }
+}
+
+.errorSection {
+  text-align: center;
+  padding: $spacing-xl;
+  background: rgba($error-color, 0.1);
+  border-radius: $radius-lg;
+
+  p {
+    margin-bottom: $spacing-md;
+    color: $error-color;
+  }
+}
+
+.resultsSection {
+  h2 {
+    margin-bottom: $spacing-lg;
+    color: $text-primary;
+  }
+}
+
+.recommendationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+}
+
+.recommendationCard {
+  position: relative;
+  display: block;
+  background: $bg-secondary;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all $transition-normal;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+.matchBadge {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  padding: $spacing-xs $spacing-sm;
+  background: $primary-color;
+  color: white;
+  border-radius: $radius-full;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.coverImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: $spacing-md;
+
+  h3 {
+    margin-bottom: $spacing-sm;
+    color: $text-primary;
+    font-size: $font-size-lg;
+  }
+}
+
+.reason {
+  margin: $spacing-sm 0;
+  color: $text-secondary;
+  font-size: $font-size-sm;
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  gap: $spacing-xs;
+  margin-top: $spacing-sm;
+}
+
+.tag {
+  padding: $spacing-xs $spacing-sm;
+  background: $bg-tertiary;
+  border-radius: $radius-md;
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+.emptySection {
+  text-align: center;
+  padding: $spacing-2xl;
+  background: $bg-secondary;
+  border-radius: $radius-lg;
+
+  p {
+    margin-bottom: $spacing-sm;
+    color: $text-secondary;
+  }
+}
+
+@include mobile {
+  .moodGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recommendationsGrid {
+    grid-template-columns: 1fr;
+  }
+}

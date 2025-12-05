@@ -169,6 +169,15 @@
   border-radius: $radius-full;
 }
 
+.aiLink {
+  background: linear-gradient(135deg, rgba($primary-color, 0.1), rgba($secondary-color, 0.1));
+  border: 1px solid rgba($primary-color, 0.2);
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($primary-color, 0.2), rgba($secondary-color, 0.2));
+  }
+}
+
 // Overlay for mobile menu
 .overlay {
   position: fixed;
