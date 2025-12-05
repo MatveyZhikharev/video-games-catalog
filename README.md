@@ -40,8 +40,10 @@ A modern SPA (Single Page Application) for discovering and tracking your favorit
 - **SCSS Modules** — Styled components with responsive design
 
 ### Backend
-- **Supabase** — PostgreSQL database with REST API
+- **Supabase** — PostgreSQL database with REST API (default)
+- **Express.js** — Custom Node.js backend (optional, see backend/)
 - Full CRUD operations support
+- **GameMatch AI** — Smart game recommendations by mood
 
 ### Testing
 - **Jest + React Testing Library** — Unit tests for reducers and helpers
@@ -56,8 +58,9 @@ A modern SPA (Single Page Application) for discovering and tracking your favorit
 
 \`\`\`
 src/
-├── api/                    # Supabase client and API methods
-│   └── supabaseClient.ts
+├── api/                    # API clients
+│   ├── supabaseClient.ts   # Supabase client and mock data
+│   └── expressClient.ts    # Express.js API client
 ├── app/                    # Redux store and typed hooks
 │   ├── store.ts
 │   └── hooks.ts
@@ -121,10 +124,15 @@ npm install --legacy-peer-deps
 cp .env.example .env
 \`\`\`
 
-4. Configure your Supabase credentials in \`.env\`:
+4. Configure your backend in \`.env\`:
 \`\`\`env
+# Option 1: Use Supabase (default)
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Option 2: Use Express.js backend
+VITE_USE_EXPRESS_BACKEND=true
+VITE_API_URL=http://localhost:3001/api
 \`\`\`
 
 5. Start the development server:
@@ -134,9 +142,9 @@ npm run dev
 
 6. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-## 🗄️ Supabase Setup
+## 🗄️ Backend Options
 
-### Database Schema
+### Option 1: Supabase (Default)
 
 Create the following tables in your Supabase project:
 
@@ -177,6 +185,47 @@ CREATE POLICY "Allow anonymous read" ON games FOR SELECT USING (true);
 
 -- Allow anonymous CRUD on favorites
 CREATE POLICY "Allow anonymous CRUD" ON favorites FOR ALL USING (true);
+\`\`\`
+
+### Option 2: Express.js Backend (Custom Server)
+
+See \`backend/README.md\` for full documentation.
+
+\`\`\`bash
+# Setup Express.js backend
+cd backend
+npm install
+cp .env.example .env
+# Configure PostgreSQL connection in .env
+npm run dev
+\`\`\`
+
+**Express.js API Endpoints:**
+| Method | URL | Description |
+|--------|-----|-------------|
+| GET | \`/api/games\` | List games with filters |
+| GET | \`/api/games/:id\` | Get game by ID |
+| POST | \`/api/games\` | Create game |
+| PATCH | \`/api/games/:id\` | Update game |
+| DELETE | \`/api/games/:id\` | Delete game |
+| GET | \`/api/favorites\` | Get user favorites |
+| POST | \`/api/favorites\` | Add to favorites |
+| DELETE | \`/api/favorites\` | Remove from favorites |
+| GET | \`/api/ai/moods\` | Get available moods |
+| POST | \`/api/ai/recommend\` | Get AI recommendations |
+
+### 🤖 GameMatch AI
+
+Get personalized game recommendations based on your mood!
+
+\`\`\`bash
+# Available moods:
+# relaxed, excited, competitive, adventurous, 
+# strategic, nostalgic, social, immersive
+
+curl -X POST http://localhost:3001/api/ai/recommend \\
+  -H "Content-Type: application/json" \\
+  -d '{"mood": "adventurous", "limit": 5}'
 \`\`\`
 
 ## 📜 Available Scripts
