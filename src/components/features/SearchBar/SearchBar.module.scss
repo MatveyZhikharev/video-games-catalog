@@ -1,0 +1,21 @@
+.searchBar {
+  width: 100%;
+  max-width: 400px;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  padding: $spacing-xs;
+  cursor: pointer;
+  color: $text-muted;
+  @include flex-center;
+  pointer-events: auto;
+  border-radius: $radius-full;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $text-primary;
+    background: rgba($text-primary, 0.1);
+  }
+}

@@ -1,0 +1,101 @@
+.card {
+  height: 100%;
+  position: relative;
+  @include flex-column;
+}
+
+.relevanceTag {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  z-index: 10;
+  padding: $spacing-xs $spacing-sm;
+  background-color: $primary-color;
+  color: white;
+  font-size: $font-xs;
+  font-weight: $font-bold;
+  border-radius: $radius-sm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cardButton {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  flex: 1;
+  @include flex-column;
+
+  &:focus-visible {
+    outline: 2px solid $primary-color;
+    outline-offset: 2px;
+  }
+}
+
+.content {
+  flex: 1;
+  @include flex-column;
+  gap: $spacing-sm;
+}
+
+.title {
+  font-size: $font-lg;
+  font-weight: $font-semibold;
+  color: $text-primary;
+  margin: 0;
+  line-height: 1.3;
+  @include truncate(2);
+}
+
+.platforms {
+  display: flex;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.platform {
+  font-size: $font-lg;
+}
+
+.genres {
+  display: flex;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.genre {
+  display: inline-block;
+  padding: $spacing-xs $spacing-sm;
+  background: rgba($primary-color, 0.1);
+  color: $primary-color;
+  font-size: $font-xs;
+  font-weight: $font-medium;
+  border-radius: $radius-full;
+}
+
+.footer {
+  padding: $spacing-sm $spacing-md;
+}
+
+.ratingWrapper {
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.date {
+  font-size: $font-xs;
+  color: $text-muted;
+}
+
+.favoriteBtn {
+  padding: $spacing-xs;
+  min-height: auto;
+  font-size: $font-lg;
+}

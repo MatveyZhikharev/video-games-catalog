@@ -1,0 +1,77 @@
+.loader {
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+}
+
+.fullScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba($bg-primary, 0.9);
+  z-index: $z-modal;
+}
+
+.spinner {
+  color: $primary-color;
+  animation: spin 1s linear infinite;
+
+  svg {
+    display: block;
+  }
+}
+
+.sm .spinner {
+  width: 24px;
+  height: 24px;
+}
+
+.md .spinner {
+  width: 40px;
+  height: 40px;
+}
+
+.lg .spinner {
+  width: 64px;
+  height: 64px;
+}
+
+.text {
+  color: $text-secondary;
+  font-size: $font-sm;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Skeleton styles
+.skeleton {
+  @include skeleton;
+}
+
+.cardSkeleton {
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+}
+
+.cardSkeletonContent {
+  padding: $spacing-md;
+  @include flex-column;
+  gap: $spacing-sm;
+}
+
+.cardSkeletonFooter {
+  @include flex-between;
+  margin-top: $spacing-sm;
+}

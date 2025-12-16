@@ -1,0 +1,91 @@
+.page {
+  @include flex-column;
+  gap: $spacing-xl;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-md;
+}
+
+.title {
+  font-size: $font-4xl;
+  margin-bottom: $spacing-sm;
+  background: $gradient-primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @include mobile {
+    font-size: $font-3xl;
+  }
+}
+
+.subtitle {
+  color: $text-secondary;
+  font-size: $font-lg;
+  margin: 0;
+
+  @include mobile {
+    font-size: $font-base;
+  }
+}
+
+.toolbar {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+// Pagination
+.pagination {
+  @include flex-center;
+  gap: $spacing-sm;
+  margin-top: $spacing-xl;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.pageButton {
+  @include flex-center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 $spacing-sm;
+  background: $bg-primary;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  font-size: $font-sm;
+  font-weight: $font-medium;
+  color: $text-primary;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $bg-secondary;
+  }
+
+  &.active {
+    background: $primary-color;
+    color: $text-light;
+    border-color: $primary-color;
+  }
+}
+
+.ellipsis {
+  padding: 0 $spacing-xs;
+  color: $text-muted;
+}

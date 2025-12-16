@@ -1,0 +1,157 @@
+.page {
+  @include flex-column;
+  gap: $spacing-2xl;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-md;
+}
+
+.title {
+  font-size: $font-4xl;
+  margin-bottom: $spacing-sm;
+  background: $gradient-primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @include mobile {
+    font-size: $font-3xl;
+  }
+}
+
+.subtitle {
+  color: $text-secondary;
+  font-size: $font-lg;
+  margin: 0;
+
+  @include mobile {
+    font-size: $font-base;
+  }
+}
+
+.section {
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  box-shadow: $shadow-md;
+
+  @include mobile {
+    padding: $spacing-md;
+  }
+}
+
+.sectionTitle {
+  font-size: $font-2xl;
+  margin-bottom: $spacing-lg;
+  color: $text-primary;
+
+  @include mobile {
+    font-size: $font-xl;
+  }
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @include flex-column;
+  gap: $spacing-md;
+}
+
+.featureItem {
+  font-size: $font-lg;
+  color: $text-secondary;
+  line-height: 1.6;
+
+  @include mobile {
+    font-size: $font-base;
+  }
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $spacing-md;
+}
+
+.techCard {
+  background: $bg-secondary;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.techName {
+  font-size: $font-lg;
+  font-weight: $font-semibold;
+  margin-bottom: $spacing-xs;
+  color: $primary-color;
+}
+
+.techDescription {
+  font-size: $font-sm;
+  color: $text-secondary;
+  margin: 0;
+}
+
+.architecture,
+.instructions {
+  @include flex-column;
+  gap: $spacing-md;
+
+  h3 {
+    font-size: $font-lg;
+    color: $text-primary;
+    margin-bottom: $spacing-xs;
+  }
+}
+
+.codeBlock {
+  background: $bg-dark;
+  color: $text-light;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+  font-size: $font-sm;
+  line-height: 1.6;
+  @include custom-scrollbar;
+}
+
+.author {
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-md;
+
+  p {
+    color: $text-secondary;
+    margin: 0;
+  }
+}
+
+.githubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  background: $bg-dark;
+  color: $text-light;
+  text-decoration: none;
+  border-radius: $radius-md;
+  font-weight: $font-medium;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: lighten($bg-dark, 10%);
+    transform: translateY(-2px);
+  }
+}

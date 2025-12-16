@@ -1,0 +1,67 @@
+.sorting {
+  position: relative;
+}
+
+.button {
+  gap: $spacing-sm;
+
+  &.active {
+    border-color: $primary-color;
+  }
+}
+
+.buttonText {
+  @include mobile {
+    display: none;
+  }
+}
+
+.chevron {
+  transition: transform $transition-fast;
+
+  &.rotated {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: $spacing-xs;
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  min-width: 200px;
+  padding: $spacing-xs;
+  z-index: $z-dropdown;
+  list-style: none;
+  @include fade-in;
+
+  @include mobile {
+    left: 0;
+    right: auto;
+  }
+}
+
+.option {
+  width: 100%;
+  @include flex-between;
+  padding: $spacing-sm $spacing-md;
+  background: none;
+  border: none;
+  font-size: $font-sm;
+  color: $text-primary;
+  cursor: pointer;
+  border-radius: $radius-md;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $bg-secondary;
+  }
+
+  &.selected {
+    color: $primary-color;
+    background: rgba($primary-color, 0.1);
+  }
+}

@@ -1,0 +1,160 @@
+// Variables and mixins are injected via vite.config.ts
+
+// Reset and base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: $font-base;
+  line-height: 1.6;
+  color: $text-primary;
+  background-color: $bg-secondary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @include custom-scrollbar;
+}
+
+#root {
+  min-height: 100vh;
+  @include flex-column;
+}
+
+// Typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-bold;
+  line-height: 1.3;
+  margin-bottom: $spacing-sm;
+}
+
+h1 {
+  font-size: $font-4xl;
+
+  @include mobile {
+    font-size: $font-3xl;
+  }
+}
+
+h2 {
+  font-size: $font-3xl;
+
+  @include mobile {
+    font-size: $font-2xl;
+  }
+}
+
+h3 {
+  font-size: $font-2xl;
+
+  @include mobile {
+    font-size: $font-xl;
+  }
+}
+
+h4 {
+  font-size: $font-xl;
+}
+
+h5 {
+  font-size: $font-lg;
+}
+
+h6 {
+  font-size: $font-base;
+}
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary-hover;
+  }
+}
+
+// Lists
+ul,
+ol {
+  padding-left: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Buttons
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+// Inputs
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+// Focus outline
+:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// Selection
+::selection {
+  background: $primary-light;
+  color: $text-primary;
+}
+
+// Container utility class
+.container {
+  @include container;
+}
+
+// Screen reader only
+.sr-only {
+  @include visually-hidden;
+}
+
+// Skip to content link
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $primary-color;
+  color: $text-light;
+  padding: $spacing-sm $spacing-md;
+  z-index: $z-tooltip;
+  transition: top $transition-fast;
+
+  &:focus {
+    top: 0;
+  }
+}
