@@ -1,6 +1,21 @@
 .card {
   height: 100%;
+  position: relative;
   @include flex-column;
+}
+
+.relevanceTag {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  z-index: 10;
+  padding: $spacing-xs $spacing-sm;
+  background-color: $primary-color;
+  color: white;
+  font-size: $font-xs;
+  font-weight: $font-bold;
+  border-radius: $radius-sm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .cardButton {

@@ -14,6 +14,7 @@ interface SortOption {
 }
 
 const SORT_OPTIONS: SortOption[] = [
+  { label: 'По релевантности', field: 'relevance', order: 'desc' },
   { label: 'Рейтинг (по убыванию)', field: 'rating', order: 'desc' },
   { label: 'Рейтинг (по возрастанию)', field: 'rating', order: 'asc' },
   { label: 'Сначала новые', field: 'release_date', order: 'desc' },

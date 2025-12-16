@@ -43,7 +43,7 @@ export interface GamesFilters {
 }
 
 export interface GamesSorting {
-  field: 'rating' | 'release_date';
+  field: 'rating' | 'release_date' | 'relevance';
   order: 'asc' | 'desc';
 }
 

@@ -7,13 +7,15 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { selectIsFavorite } from '@/features/favorites/favoritesSelectors';
 import { addToFavorites, removeFromFavorites } from '@/features/favorites/favoritesSlice';
 import { formatDateShort, getPlatformIcon, truncateText } from '@/utils/helpers';
+import { getRelevanceColor } from '@/utils/recommendation';
 import styles from './GameCard.module.scss';
 
 export interface GameCardProps {
   game: Game;
+  relevanceScore?: number;
 }
 
-export const GameCard = ({ game }: GameCardProps) => {
+export const GameCard = ({ game, relevanceScore }: GameCardProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const isFavorite = useAppSelector(selectIsFavorite(game.id));
@@ -33,6 +35,14 @@ export const GameCard = ({ game }: GameCardProps) => {
 
   return (
     <Card hoverable padding="none" className={styles.card}>
+      {relevanceScore !== undefined && relevanceScore > 0 && (
+        <div 
+          className={styles.relevanceTag} 
+          style={{ backgroundColor: getRelevanceColor(relevanceScore) }}
+        >
+          {relevanceScore}%
+        </div>
+      )}
       <button
         className={styles.cardButton}
         onClick={handleCardClick}

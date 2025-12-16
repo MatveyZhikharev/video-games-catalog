@@ -11,6 +11,7 @@ export interface GameListProps {
   skeletonCount?: number;
   emptyMessage?: string;
   onClearFilters?: () => void;
+  relevanceScores?: Map<string, number>;
 }
 
 export const GameList = ({
@@ -19,6 +20,7 @@ export const GameList = ({
   skeletonCount = 12,
   emptyMessage = 'Игры не найдены по вашим критериям.',
   onClearFilters,
+  relevanceScores,
 }: GameListProps) => {
   if (loading) {
     return (
@@ -49,7 +51,11 @@ export const GameList = ({
   return (
     <div className={styles.grid}>
       {games.map((game) => (
-        <GameCard key={game.id} game={game} />
+        <GameCard 
+          key={game.id} 
+          game={game} 
+          relevanceScore={relevanceScores?.get(game.id)}
+        />
       ))}
     </div>
   );
